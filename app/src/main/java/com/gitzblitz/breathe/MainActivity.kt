@@ -3,6 +3,7 @@ package com.gitzblitz.breathe
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import com.github.florent37.viewanimator.ViewAnimator
 import com.gitzblitz.breathe.util.Prefs
@@ -55,16 +56,23 @@ class MainActivity : AppCompatActivity() {
                 prefs.breaths = prefs.breaths +1
                 prefs.setDate(System.currentTimeMillis())
 
-                object : CountDownTimer(2000, 1000){
-                    override fun onFinish() {
-                       startActivity(Intent(applicationContext, MainActivity::class.java))
-                        finish()
-                    }
+                val handler = Handler()
+                val countDownTimer = Runnable {
+                    startActivity(Intent(applicationContext, MainActivity::class.java))
+                    finish()
+                }
+                handler.postDelayed(countDownTimer, 100)
 
-                    override fun onTick(millisUntilFinished: Long) {
-
-                    }
-                }.start()
+//                object : CountDownTimer(2000, 1000){
+//                    override fun onFinish() {
+//                       startActivity(Intent(applicationContext, MainActivity::class.java))
+//                        finish()
+//                    }
+//
+//                    override fun onTick(millisUntilFinished: Long) {
+//
+//                    }
+//                }.start()
             }
             .start()
     }
