@@ -75,6 +75,7 @@
 			android:layout_below="@id/lotusImageView"
 			android:layout_centerHorizontal="true"
 			android:text="Breathe"
+			android:id="@+id/guideTxt"
 			android:layout_marginTop="37dp"
 			android:textColor="@android:color/white"
 			android:textSize="18sp"
